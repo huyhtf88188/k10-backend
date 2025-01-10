@@ -6,16 +6,14 @@ const categoriesSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    price: {
-      type: Number,
-      required: true,
-    },
+
     description: {
       type: String,
       default: "Updating",
     },
     slug: {
       type: String,
+      default: false,
     },
     isHidden: {
       type: Boolean,
@@ -31,6 +29,6 @@ const categoriesSchema = new mongoose.Schema(
   { timestamps: true, versionKey: false }
 );
 
-const Categories = mongoose.model("Categories", categoriesSchema);
+const Categories = mongoose.model("Categories", categoriesSchema, "categories");
 
 export default Categories;

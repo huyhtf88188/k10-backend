@@ -7,6 +7,7 @@ export const create = async (req, res) => {
         message: "Not found!",
       });
     }
+
     return res.status(200).send({
       message: "Create successfully!",
       datas,
@@ -40,7 +41,10 @@ export const getAll = async (req, res) => {
 
 export const getById = async (req, res, next) => {
   try {
-    const datas = await Categories.findById(req.params.id);
+    const datas = await Categories.findById(req.params.id)
+      .populate("productList")
+      .exec();
+    console.log(datas);
     if (!datas) {
       return res.status(404).send({
         message: "Not found!",
@@ -51,8 +55,7 @@ export const getById = async (req, res, next) => {
       datas,
     });
   } catch (error) {
-    console.log("alo");
-    next();
+    console.log(error);
   }
 };
 

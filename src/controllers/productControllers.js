@@ -1,8 +1,19 @@
 import Product from "../models/Product.js";
-
+import Categories from "./../models/Categories.js";
 export const create = async (req, res) => {
   try {
+    const findCategoryId = await Categories.findById(req.body.categoryId);
+
+    if (!findCategoryId) {
+      return res.status(404).json({
+        message: "categoryId không tìm thấy",
+      });
+    }
+
     const datas = await Product.create(req.body);
+
+    findCategoryId.productList.push(datas._id);
+    await findCategoryId.save();
     if (!datas) {
       return res.status(404).send({
         message: "Not found!",
@@ -13,6 +24,7 @@ export const create = async (req, res) => {
       datas,
     });
   } catch (error) {
+    console.log(error);
     res.status(400).send({
       message: "Error!",
     });
@@ -46,7 +58,6 @@ export const getById = async (req, res, next) => {
       return res.status(404).send({
         message: "Not found!",
       });
-      // throw Error("Not found product");
     }
     return res.status(200).send({
       message: "Get successfully!",

@@ -6,8 +6,8 @@ import {
   removeById,
   updateById,
 } from "../controllers/productControllers.js";
-import { valiBodyRequest } from "../validations/index.js";
 import { productSchema } from "../validations/productValidBody.js";
+import { valiBodyRequest } from "../middlewares/valiBodyRequest.js";
 
 const productRoutes = Router();
 

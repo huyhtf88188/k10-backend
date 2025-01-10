@@ -1,7 +1,5 @@
 import { Router } from "express";
 
-import { valiBodyRequest } from "../validations/index.js";
-
 import { categoriesSchema } from "../validations/categories.js";
 import {
   create,
@@ -10,6 +8,7 @@ import {
   removeById,
   updateById,
 } from "../controllers/categoriesControllers.js";
+import { valiBodyRequest } from "../middlewares/valiBodyRequest.js";
 
 const categoriesRoutes = Router();
 

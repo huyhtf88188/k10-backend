@@ -4,6 +4,7 @@ import {
   getAll,
   getById,
   removeById,
+  softDeleteByIdAndUpdate,
   updateById,
 } from "../controllers/productControllers.js";
 import { productSchema } from "../validations/productValidBody.js";
@@ -15,6 +16,7 @@ productRoutes.get("/", getAll);
 productRoutes.get("/:id", getById);
 productRoutes.post("/", valiBodyRequest(productSchema), create);
 productRoutes.patch("/:id", valiBodyRequest(productSchema), updateById);
+productRoutes.patch("/soft-delete/:id", softDeleteByIdAndUpdate);
 productRoutes.delete("/:id", removeById);
 
 export default productRoutes;

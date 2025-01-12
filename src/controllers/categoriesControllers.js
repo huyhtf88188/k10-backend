@@ -42,7 +42,7 @@ export const getAll = async (req, res) => {
 export const getById = async (req, res, next) => {
   try {
     const datas = await Categories.findById(req.params.id)
-      .populate("productList")
+      .populate("products")
       .exec();
     console.log(datas);
     if (!datas) {

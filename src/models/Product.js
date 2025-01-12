@@ -23,6 +23,10 @@ const productSchema = new mongoose.Schema(
       ref: "Categories",
       required: true,
     },
+    deletedAt: {
+      type: Date,
+      default: null,
+    },
   },
   { timestamps: true, versionKey: false }
 );

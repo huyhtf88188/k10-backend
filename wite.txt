@@ -1,0 +1,9 @@
+1 khởi tạo dự án node
+
+- npm init -y
+- tạo expresss : npm i expresss
+
+
+
+
+2 - 

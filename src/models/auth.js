@@ -10,8 +10,6 @@ const authSchemas = new mongoose.Schema(
     password: {
       type: String,
       require: true,
-      //   minLength: [6, "Must be at least 6, got {VALUE}"],
-      //   maxLength: [50, "Must be at least 50, got {VALUE}"],
       hidden: true,
     },
 

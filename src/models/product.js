@@ -1,10 +1,14 @@
 import mongoose from "mongoose";
 
-const categorySchema = new mongoose.Schema(
+const productSchema = new mongoose.Schema(
   {
     title: {
       require: true,
       type: String,
+    },
+    price: {
+      type: Number,
+      require: true,
     },
     description: {
       type: String,
@@ -15,7 +19,10 @@ const categorySchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
-    product: [],
+    categoryId: {
+      type: String,
+      require: true,
+    },
     deleteAt: {
       type: Date,
       default: null,
@@ -25,6 +32,6 @@ const categorySchema = new mongoose.Schema(
   { timestamps: true, versionKey: false }
 );
 
-const Categories = mongoose.model("Categories", categorySchema, "categories");
+const Product = mongoose.model("products", productSchema, "products");
 
-export default Categories;
+export default Product;
